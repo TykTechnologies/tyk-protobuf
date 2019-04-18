@@ -41,7 +41,7 @@ namespace protobuf_coprocess_5fsession_5fstate_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[8];
+  static const ::google::protobuf::internal::ParseTable schema[9];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -70,6 +70,9 @@ extern SessionStateDefaultTypeInternal _SessionState_default_instance_;
 class SessionState_AccessRightsEntry_DoNotUse;
 class SessionState_AccessRightsEntry_DoNotUseDefaultTypeInternal;
 extern SessionState_AccessRightsEntry_DoNotUseDefaultTypeInternal _SessionState_AccessRightsEntry_DoNotUse_default_instance_;
+class SessionState_MetadataEntry_DoNotUse;
+class SessionState_MetadataEntry_DoNotUseDefaultTypeInternal;
+extern SessionState_MetadataEntry_DoNotUseDefaultTypeInternal _SessionState_MetadataEntry_DoNotUse_default_instance_;
 class SessionState_OauthKeysEntry_DoNotUse;
 class SessionState_OauthKeysEntry_DoNotUseDefaultTypeInternal;
 extern SessionState_OauthKeysEntry_DoNotUseDefaultTypeInternal _SessionState_OauthKeysEntry_DoNotUse_default_instance_;
@@ -83,6 +86,7 @@ template<> ::coprocess::JWTData* Arena::CreateMaybeMessage<::coprocess::JWTData>
 template<> ::coprocess::Monitor* Arena::CreateMaybeMessage<::coprocess::Monitor>(Arena*);
 template<> ::coprocess::SessionState* Arena::CreateMaybeMessage<::coprocess::SessionState>(Arena*);
 template<> ::coprocess::SessionState_AccessRightsEntry_DoNotUse* Arena::CreateMaybeMessage<::coprocess::SessionState_AccessRightsEntry_DoNotUse>(Arena*);
+template<> ::coprocess::SessionState_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::coprocess::SessionState_MetadataEntry_DoNotUse>(Arena*);
 template<> ::coprocess::SessionState_OauthKeysEntry_DoNotUse* Arena::CreateMaybeMessage<::coprocess::SessionState_OauthKeysEntry_DoNotUse>(Arena*);
 }  // namespace protobuf
 }  // namespace google
@@ -775,6 +779,27 @@ public:
 
 // -------------------------------------------------------------------
 
+class SessionState_MetadataEntry_DoNotUse : public ::google::protobuf::internal::MapEntry<SessionState_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > {
+public:
+  typedef ::google::protobuf::internal::MapEntry<SessionState_MetadataEntry_DoNotUse, 
+    ::std::string, ::std::string,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+    0 > SuperType;
+  SessionState_MetadataEntry_DoNotUse();
+  SessionState_MetadataEntry_DoNotUse(::google::protobuf::Arena* arena);
+  void MergeFrom(const SessionState_MetadataEntry_DoNotUse& other);
+  static const SessionState_MetadataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const SessionState_MetadataEntry_DoNotUse*>(&_SessionState_MetadataEntry_DoNotUse_default_instance_); }
+  void MergeFrom(const ::google::protobuf::Message& other) final;
+  ::google::protobuf::Metadata GetMetadata() const;
+};
+
+// -------------------------------------------------------------------
+
 class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:coprocess.SessionState) */ {
  public:
   SessionState();
@@ -810,7 +835,7 @@ class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_po
                &_SessionState_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   void Swap(SessionState* other);
   friend void swap(SessionState& a, SessionState& b) {
@@ -881,6 +906,15 @@ class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::Map< ::std::string, ::std::string >*
       mutable_oauth_keys();
 
+  // map<string, string> metadata = 23;
+  int metadata_size() const;
+  void clear_metadata();
+  static const int kMetadataFieldNumber = 23;
+  const ::google::protobuf::Map< ::std::string, ::std::string >&
+      metadata() const;
+  ::google::protobuf::Map< ::std::string, ::std::string >*
+      mutable_metadata();
+
   // repeated string tags = 24;
   int tags_size() const;
   void clear_tags();
@@ -902,6 +936,28 @@ class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_po
   void add_tags(const char* value, size_t size);
   const ::google::protobuf::RepeatedPtrField< ::std::string>& tags() const;
   ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_tags();
+
+  // repeated string apply_policies = 29;
+  int apply_policies_size() const;
+  void clear_apply_policies();
+  static const int kApplyPoliciesFieldNumber = 29;
+  const ::std::string& apply_policies(int index) const;
+  ::std::string* mutable_apply_policies(int index);
+  void set_apply_policies(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_apply_policies(int index, ::std::string&& value);
+  #endif
+  void set_apply_policies(int index, const char* value);
+  void set_apply_policies(int index, const char* value, size_t size);
+  ::std::string* add_apply_policies();
+  void add_apply_policies(const ::std::string& value);
+  #if LANG_CXX11
+  void add_apply_policies(::std::string&& value);
+  #endif
+  void add_apply_policies(const char* value);
+  void add_apply_policies(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& apply_policies() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_apply_policies();
 
   // string org_id = 11;
   void clear_org_id();
@@ -959,20 +1015,6 @@ class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* release_apply_policy_id();
   void set_allocated_apply_policy_id(::std::string* apply_policy_id);
 
-  // string metadata = 23;
-  void clear_metadata();
-  static const int kMetadataFieldNumber = 23;
-  const ::std::string& metadata() const;
-  void set_metadata(const ::std::string& value);
-  #if LANG_CXX11
-  void set_metadata(::std::string&& value);
-  #endif
-  void set_metadata(const char* value);
-  void set_metadata(const char* value, size_t size);
-  ::std::string* mutable_metadata();
-  ::std::string* release_metadata();
-  void set_allocated_metadata(::std::string* metadata);
-
   // string alias = 25;
   void clear_alias();
   static const int kAliasFieldNumber = 25;
@@ -1000,6 +1042,20 @@ class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::std::string* mutable_last_updated();
   ::std::string* release_last_updated();
   void set_allocated_last_updated(::std::string* last_updated);
+
+  // string certificate = 30;
+  void clear_certificate();
+  static const int kCertificateFieldNumber = 30;
+  const ::std::string& certificate() const;
+  void set_certificate(const ::std::string& value);
+  #if LANG_CXX11
+  void set_certificate(::std::string&& value);
+  #endif
+  void set_certificate(const char* value);
+  void set_certificate(const char* value, size_t size);
+  ::std::string* mutable_certificate();
+  ::std::string* release_certificate();
+  void set_allocated_certificate(::std::string* certificate);
 
   // .coprocess.BasicAuthData basic_auth_data = 14;
   bool has_basic_auth_data() const;
@@ -1143,14 +1199,21 @@ class SessionState : public ::google::protobuf::Message /* @@protoc_insertion_po
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
       0 > oauth_keys_;
+  ::google::protobuf::internal::MapField<
+      SessionState_MetadataEntry_DoNotUse,
+      ::std::string, ::std::string,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      0 > metadata_;
   ::google::protobuf::RepeatedPtrField< ::std::string> tags_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> apply_policies_;
   ::google::protobuf::internal::ArenaStringPtr org_id_;
   ::google::protobuf::internal::ArenaStringPtr oauth_client_id_;
   ::google::protobuf::internal::ArenaStringPtr hmac_secret_;
   ::google::protobuf::internal::ArenaStringPtr apply_policy_id_;
-  ::google::protobuf::internal::ArenaStringPtr metadata_;
   ::google::protobuf::internal::ArenaStringPtr alias_;
   ::google::protobuf::internal::ArenaStringPtr last_updated_;
+  ::google::protobuf::internal::ArenaStringPtr certificate_;
   ::coprocess::BasicAuthData* basic_auth_data_;
   ::coprocess::JWTData* jwt_data_;
   ::coprocess::Monitor* monitor_;
@@ -1714,6 +1777,8 @@ Monitor::mutable_trigger_limits() {
   // @@protoc_insertion_point(field_mutable_list:coprocess.Monitor.trigger_limits)
   return &trigger_limits_;
 }
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -2315,57 +2380,22 @@ inline void SessionState::set_enable_detailed_recording(bool value) {
   // @@protoc_insertion_point(field_set:coprocess.SessionState.enable_detailed_recording)
 }
 
-// string metadata = 23;
+// map<string, string> metadata = 23;
+inline int SessionState::metadata_size() const {
+  return metadata_.size();
+}
 inline void SessionState::clear_metadata() {
-  metadata_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  metadata_.Clear();
 }
-inline const ::std::string& SessionState::metadata() const {
-  // @@protoc_insertion_point(field_get:coprocess.SessionState.metadata)
-  return metadata_.GetNoArena();
+inline const ::google::protobuf::Map< ::std::string, ::std::string >&
+SessionState::metadata() const {
+  // @@protoc_insertion_point(field_map:coprocess.SessionState.metadata)
+  return metadata_.GetMap();
 }
-inline void SessionState::set_metadata(const ::std::string& value) {
-  
-  metadata_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:coprocess.SessionState.metadata)
-}
-#if LANG_CXX11
-inline void SessionState::set_metadata(::std::string&& value) {
-  
-  metadata_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:coprocess.SessionState.metadata)
-}
-#endif
-inline void SessionState::set_metadata(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  metadata_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:coprocess.SessionState.metadata)
-}
-inline void SessionState::set_metadata(const char* value, size_t size) {
-  
-  metadata_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:coprocess.SessionState.metadata)
-}
-inline ::std::string* SessionState::mutable_metadata() {
-  
-  // @@protoc_insertion_point(field_mutable:coprocess.SessionState.metadata)
-  return metadata_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* SessionState::release_metadata() {
-  // @@protoc_insertion_point(field_release:coprocess.SessionState.metadata)
-  
-  return metadata_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void SessionState::set_allocated_metadata(::std::string* metadata) {
-  if (metadata != NULL) {
-    
-  } else {
-    
-  }
-  metadata_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), metadata);
-  // @@protoc_insertion_point(field_set_allocated:coprocess.SessionState.metadata)
+inline ::google::protobuf::Map< ::std::string, ::std::string >*
+SessionState::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_map:coprocess.SessionState.metadata)
+  return metadata_.MutableMap();
 }
 
 // repeated string tags = 24;
@@ -2571,9 +2601,133 @@ inline void SessionState::set_session_lifetime(::google::protobuf::int64 value) 
   // @@protoc_insertion_point(field_set:coprocess.SessionState.session_lifetime)
 }
 
+// repeated string apply_policies = 29;
+inline int SessionState::apply_policies_size() const {
+  return apply_policies_.size();
+}
+inline void SessionState::clear_apply_policies() {
+  apply_policies_.Clear();
+}
+inline const ::std::string& SessionState::apply_policies(int index) const {
+  // @@protoc_insertion_point(field_get:coprocess.SessionState.apply_policies)
+  return apply_policies_.Get(index);
+}
+inline ::std::string* SessionState::mutable_apply_policies(int index) {
+  // @@protoc_insertion_point(field_mutable:coprocess.SessionState.apply_policies)
+  return apply_policies_.Mutable(index);
+}
+inline void SessionState::set_apply_policies(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:coprocess.SessionState.apply_policies)
+  apply_policies_.Mutable(index)->assign(value);
+}
+#if LANG_CXX11
+inline void SessionState::set_apply_policies(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:coprocess.SessionState.apply_policies)
+  apply_policies_.Mutable(index)->assign(std::move(value));
+}
+#endif
+inline void SessionState::set_apply_policies(int index, const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  apply_policies_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:coprocess.SessionState.apply_policies)
+}
+inline void SessionState::set_apply_policies(int index, const char* value, size_t size) {
+  apply_policies_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:coprocess.SessionState.apply_policies)
+}
+inline ::std::string* SessionState::add_apply_policies() {
+  // @@protoc_insertion_point(field_add_mutable:coprocess.SessionState.apply_policies)
+  return apply_policies_.Add();
+}
+inline void SessionState::add_apply_policies(const ::std::string& value) {
+  apply_policies_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:coprocess.SessionState.apply_policies)
+}
+#if LANG_CXX11
+inline void SessionState::add_apply_policies(::std::string&& value) {
+  apply_policies_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:coprocess.SessionState.apply_policies)
+}
+#endif
+inline void SessionState::add_apply_policies(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  apply_policies_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:coprocess.SessionState.apply_policies)
+}
+inline void SessionState::add_apply_policies(const char* value, size_t size) {
+  apply_policies_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:coprocess.SessionState.apply_policies)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+SessionState::apply_policies() const {
+  // @@protoc_insertion_point(field_list:coprocess.SessionState.apply_policies)
+  return apply_policies_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+SessionState::mutable_apply_policies() {
+  // @@protoc_insertion_point(field_mutable_list:coprocess.SessionState.apply_policies)
+  return &apply_policies_;
+}
+
+// string certificate = 30;
+inline void SessionState::clear_certificate() {
+  certificate_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& SessionState::certificate() const {
+  // @@protoc_insertion_point(field_get:coprocess.SessionState.certificate)
+  return certificate_.GetNoArena();
+}
+inline void SessionState::set_certificate(const ::std::string& value) {
+  
+  certificate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:coprocess.SessionState.certificate)
+}
+#if LANG_CXX11
+inline void SessionState::set_certificate(::std::string&& value) {
+  
+  certificate_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:coprocess.SessionState.certificate)
+}
+#endif
+inline void SessionState::set_certificate(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  certificate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:coprocess.SessionState.certificate)
+}
+inline void SessionState::set_certificate(const char* value, size_t size) {
+  
+  certificate_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:coprocess.SessionState.certificate)
+}
+inline ::std::string* SessionState::mutable_certificate() {
+  
+  // @@protoc_insertion_point(field_mutable:coprocess.SessionState.certificate)
+  return certificate_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* SessionState::release_certificate() {
+  // @@protoc_insertion_point(field_release:coprocess.SessionState.certificate)
+  
+  return certificate_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void SessionState::set_allocated_certificate(::std::string* certificate) {
+  if (certificate != NULL) {
+    
+  } else {
+    
+  }
+  certificate_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), certificate);
+  // @@protoc_insertion_point(field_set_allocated:coprocess.SessionState.certificate)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

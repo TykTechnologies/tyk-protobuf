@@ -219,6 +219,10 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, extended_params_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, delete_params_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, return_overrides_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, method_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, request_uri_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, scheme_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::coprocess::MiniRequestObject, raw_body_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 7, sizeof(::coprocess::MiniRequestObject_HeadersEntry_DoNotUse)},
@@ -261,7 +265,7 @@ void AddDescriptorsImpl() {
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
       "\n#coprocess_mini_request_object.proto\022\tc"
       "oprocess\032 coprocess_return_overrides.pro"
-      "to\"\323\005\n\021MiniRequestObject\022:\n\007headers\030\001 \003("
+      "to\"\232\006\n\021MiniRequestObject\022:\n\007headers\030\001 \003("
       "\0132).coprocess.MiniRequestObject.HeadersE"
       "ntry\022A\n\013set_headers\030\002 \003(\0132,.coprocess.Mi"
       "niRequestObject.SetHeadersEntry\022\026\n\016delet"
@@ -272,17 +276,19 @@ void AddDescriptorsImpl() {
       "Entry\022I\n\017extended_params\030\010 \003(\01320.coproce"
       "ss.MiniRequestObject.ExtendedParamsEntry"
       "\022\025\n\rdelete_params\030\t \003(\t\0224\n\020return_overri"
-      "des\030\n \001(\0132\032.coprocess.ReturnOverrides\032.\n"
-      "\014HeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
-      "\t:\0028\001\0321\n\017SetHeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n"
-      "\005value\030\002 \001(\t:\0028\001\032-\n\013ParamsEntry\022\013\n\003key\030\001"
-      " \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0320\n\016AddParamsEntr"
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0325\n\023Ext"
-      "endedParamsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002"
-      " \001(\t:\0028\001b\006proto3"
+      "des\030\n \001(\0132\032.coprocess.ReturnOverrides\022\016\n"
+      "\006method\030\013 \001(\t\022\023\n\013request_uri\030\014 \001(\t\022\016\n\006sc"
+      "heme\030\r \001(\t\022\020\n\010raw_body\030\016 \001(\014\032.\n\014HeadersE"
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0321\n\017"
+      "SetHeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 "
+      "\001(\t:\0028\001\032-\n\013ParamsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
+      "alue\030\002 \001(\t:\0028\001\0320\n\016AddParamsEntry\022\013\n\003key\030"
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0325\n\023ExtendedPara"
+      "msEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001b"
+      "\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 816);
+      descriptor, 887);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "coprocess_mini_request_object.proto", &protobuf_RegisterTypes);
   ::protobuf_coprocess_5freturn_5foverrides_2eproto::AddDescriptors();
@@ -409,6 +415,10 @@ const int MiniRequestObject::kAddParamsFieldNumber;
 const int MiniRequestObject::kExtendedParamsFieldNumber;
 const int MiniRequestObject::kDeleteParamsFieldNumber;
 const int MiniRequestObject::kReturnOverridesFieldNumber;
+const int MiniRequestObject::kMethodFieldNumber;
+const int MiniRequestObject::kRequestUriFieldNumber;
+const int MiniRequestObject::kSchemeFieldNumber;
+const int MiniRequestObject::kRawBodyFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 MiniRequestObject::MiniRequestObject()
@@ -437,6 +447,22 @@ MiniRequestObject::MiniRequestObject(const MiniRequestObject& from)
   if (from.url().size() > 0) {
     url_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.url_);
   }
+  method_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.method().size() > 0) {
+    method_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.method_);
+  }
+  request_uri_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.request_uri().size() > 0) {
+    request_uri_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.request_uri_);
+  }
+  scheme_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.scheme().size() > 0) {
+    scheme_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.scheme_);
+  }
+  raw_body_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.raw_body().size() > 0) {
+    raw_body_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.raw_body_);
+  }
   if (from.has_return_overrides()) {
     return_overrides_ = new ::coprocess::ReturnOverrides(*from.return_overrides_);
   } else {
@@ -448,6 +474,10 @@ MiniRequestObject::MiniRequestObject(const MiniRequestObject& from)
 void MiniRequestObject::SharedCtor() {
   body_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   url_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  method_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  request_uri_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  scheme_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  raw_body_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   return_overrides_ = NULL;
 }
 
@@ -459,6 +489,10 @@ MiniRequestObject::~MiniRequestObject() {
 void MiniRequestObject::SharedDtor() {
   body_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   url_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  method_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  request_uri_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  scheme_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  raw_body_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != internal_default_instance()) delete return_overrides_;
 }
 
@@ -491,6 +525,10 @@ void MiniRequestObject::Clear() {
   delete_params_.Clear();
   body_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   url_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  method_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  request_uri_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  scheme_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  raw_body_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (GetArenaNoVirtual() == NULL && return_overrides_ != NULL) {
     delete return_overrides_;
   }
@@ -715,6 +753,66 @@ bool MiniRequestObject::MergePartialFromCodedStream(
             static_cast< ::google::protobuf::uint8>(82u /* 82 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
                input, mutable_return_overrides()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string method = 11;
+      case 11: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(90u /* 90 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_method()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->method().data(), static_cast<int>(this->method().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "coprocess.MiniRequestObject.method"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string request_uri = 12;
+      case 12: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(98u /* 98 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_request_uri()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->request_uri().data(), static_cast<int>(this->request_uri().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "coprocess.MiniRequestObject.request_uri"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string scheme = 13;
+      case 13: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(106u /* 106 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_scheme()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->scheme().data(), static_cast<int>(this->scheme().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "coprocess.MiniRequestObject.scheme"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // bytes raw_body = 14;
+      case 14: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(114u /* 114 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_raw_body()));
         } else {
           goto handle_unusual;
         }
@@ -1056,6 +1154,42 @@ void MiniRequestObject::SerializeWithCachedSizes(
   if (this->has_return_overrides()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       10, this->_internal_return_overrides(), output);
+  }
+
+  // string method = 11;
+  if (this->method().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->method().data(), static_cast<int>(this->method().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "coprocess.MiniRequestObject.method");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      11, this->method(), output);
+  }
+
+  // string request_uri = 12;
+  if (this->request_uri().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->request_uri().data(), static_cast<int>(this->request_uri().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "coprocess.MiniRequestObject.request_uri");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      12, this->request_uri(), output);
+  }
+
+  // string scheme = 13;
+  if (this->scheme().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->scheme().data(), static_cast<int>(this->scheme().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "coprocess.MiniRequestObject.scheme");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      13, this->scheme(), output);
+  }
+
+  // bytes raw_body = 14;
+  if (this->raw_body().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      14, this->raw_body(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1406,6 +1540,46 @@ void MiniRequestObject::SerializeWithCachedSizes(
         10, this->_internal_return_overrides(), deterministic, target);
   }
 
+  // string method = 11;
+  if (this->method().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->method().data(), static_cast<int>(this->method().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "coprocess.MiniRequestObject.method");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        11, this->method(), target);
+  }
+
+  // string request_uri = 12;
+  if (this->request_uri().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->request_uri().data(), static_cast<int>(this->request_uri().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "coprocess.MiniRequestObject.request_uri");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        12, this->request_uri(), target);
+  }
+
+  // string scheme = 13;
+  if (this->scheme().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->scheme().data(), static_cast<int>(this->scheme().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "coprocess.MiniRequestObject.scheme");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        13, this->scheme(), target);
+  }
+
+  // bytes raw_body = 14;
+  if (this->raw_body().size() > 0) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        14, this->raw_body(), target);
+  }
+
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
@@ -1523,6 +1697,34 @@ size_t MiniRequestObject::ByteSizeLong() const {
         this->url());
   }
 
+  // string method = 11;
+  if (this->method().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->method());
+  }
+
+  // string request_uri = 12;
+  if (this->request_uri().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->request_uri());
+  }
+
+  // string scheme = 13;
+  if (this->scheme().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->scheme());
+  }
+
+  // bytes raw_body = 14;
+  if (this->raw_body().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->raw_body());
+  }
+
   // .coprocess.ReturnOverrides return_overrides = 10;
   if (this->has_return_overrides()) {
     total_size += 1 +
@@ -1572,6 +1774,22 @@ void MiniRequestObject::MergeFrom(const MiniRequestObject& from) {
 
     url_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.url_);
   }
+  if (from.method().size() > 0) {
+
+    method_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.method_);
+  }
+  if (from.request_uri().size() > 0) {
+
+    request_uri_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.request_uri_);
+  }
+  if (from.scheme().size() > 0) {
+
+    scheme_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.scheme_);
+  }
+  if (from.raw_body().size() > 0) {
+
+    raw_body_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.raw_body_);
+  }
   if (from.has_return_overrides()) {
     mutable_return_overrides()->::coprocess::ReturnOverrides::MergeFrom(from.return_overrides());
   }
@@ -1611,6 +1829,14 @@ void MiniRequestObject::InternalSwap(MiniRequestObject* other) {
   body_.Swap(&other->body_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   url_.Swap(&other->url_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  method_.Swap(&other->method_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  request_uri_.Swap(&other->request_uri_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  scheme_.Swap(&other->scheme_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  raw_body_.Swap(&other->raw_body_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(return_overrides_, other->return_overrides_);
   _internal_metadata_.Swap(&other->_internal_metadata_);

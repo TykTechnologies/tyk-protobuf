@@ -27,7 +27,7 @@ extern PROTOBUF_INTERNAL_EXPORT_protobuf_coprocess_5fobject_2eproto ::google::pr
 extern PROTOBUF_INTERNAL_EXPORT_protobuf_coprocess_5fobject_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Object_SpecEntry_DoNotUse;
 }  // namespace protobuf_coprocess_5fobject_2eproto
 namespace protobuf_coprocess_5fsession_5fstate_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_coprocess_5fsession_5fstate_2eproto ::google::protobuf::internal::SCCInfo<5> scc_info_SessionState;
+extern PROTOBUF_INTERNAL_EXPORT_protobuf_coprocess_5fsession_5fstate_2eproto ::google::protobuf::internal::SCCInfo<6> scc_info_SessionState;
 }  // namespace protobuf_coprocess_5fsession_5fstate_2eproto
 namespace coprocess {
 class Object_MetadataEntry_DoNotUseDefaultTypeInternal {

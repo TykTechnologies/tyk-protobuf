@@ -4044,14 +4044,38 @@ public final class CoprocessSessionState {
     boolean getEnableDetailedRecording();
 
     /**
-     * <code>string metadata = 23;</code>
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
      */
-    java.lang.String getMetadata();
+    int getMetadataCount();
     /**
-     * <code>string metadata = 23;</code>
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
      */
-    com.google.protobuf.ByteString
-        getMetadataBytes();
+    boolean containsMetadata(
+        java.lang.String key);
+    /**
+     * Use {@link #getMetadataMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.String>
+    getMetadata();
+    /**
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.String>
+    getMetadataMap();
+    /**
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
+     */
+
+    java.lang.String getMetadataOrDefault(
+        java.lang.String key,
+        java.lang.String defaultValue);
+    /**
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
+     */
+
+    java.lang.String getMetadataOrThrow(
+        java.lang.String key);
 
     /**
      * <code>repeated string tags = 24;</code>
@@ -4101,6 +4125,35 @@ public final class CoprocessSessionState {
      * <code>int64 session_lifetime = 28;</code>
      */
     long getSessionLifetime();
+
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    java.util.List<java.lang.String>
+        getApplyPoliciesList();
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    int getApplyPoliciesCount();
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    java.lang.String getApplyPolicies(int index);
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    com.google.protobuf.ByteString
+        getApplyPoliciesBytes(int index);
+
+    /**
+     * <code>string certificate = 30;</code>
+     */
+    java.lang.String getCertificate();
+    /**
+     * <code>string certificate = 30;</code>
+     */
+    com.google.protobuf.ByteString
+        getCertificateBytes();
   }
   /**
    * Protobuf type {@code coprocess.SessionState}
@@ -4132,12 +4185,13 @@ public final class CoprocessSessionState {
       applyPolicyId_ = "";
       dataExpires_ = 0L;
       enableDetailedRecording_ = false;
-      metadata_ = "";
       tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       alias_ = "";
       lastUpdated_ = "";
       idExtractorDeadline_ = 0L;
       sessionLifetime_ = 0L;
+      applyPolicies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      certificate_ = "";
     }
 
     @java.lang.Override
@@ -4319,9 +4373,16 @@ public final class CoprocessSessionState {
               break;
             }
             case 186: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              metadata_ = s;
+              if (!((mutable_bitField0_ & 0x00400000) == 0x00400000)) {
+                metadata_ = com.google.protobuf.MapField.newMapField(
+                    MetadataDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00400000;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              metadata__ = input.readMessage(
+                  MetadataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              metadata_.getMutableMap().put(
+                  metadata__.getKey(), metadata__.getValue());
               break;
             }
             case 194: {
@@ -4355,6 +4416,21 @@ public final class CoprocessSessionState {
               sessionLifetime_ = input.readInt64();
               break;
             }
+            case 234: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x10000000) == 0x10000000)) {
+                applyPolicies_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x10000000;
+              }
+              applyPolicies_.add(s);
+              break;
+            }
+            case 242: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              certificate_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownFieldProto3(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -4372,6 +4448,9 @@ public final class CoprocessSessionState {
       } finally {
         if (((mutable_bitField0_ & 0x00800000) == 0x00800000)) {
           tags_ = tags_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x10000000) == 0x10000000)) {
+          applyPolicies_ = applyPolicies_.getUnmodifiableView();
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4391,6 +4470,8 @@ public final class CoprocessSessionState {
           return internalGetAccessRights();
         case 13:
           return internalGetOauthKeys();
+        case 23:
+          return internalGetMetadata();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -4874,37 +4955,79 @@ public final class CoprocessSessionState {
     }
 
     public static final int METADATA_FIELD_NUMBER = 23;
-    private volatile java.lang.Object metadata_;
-    /**
-     * <code>string metadata = 23;</code>
-     */
-    public java.lang.String getMetadata() {
-      java.lang.Object ref = metadata_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        metadata_ = s;
-        return s;
+    private static final class MetadataDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.String> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.String>newDefaultInstance(
+                  coprocess.CoprocessSessionState.internal_static_coprocess_SessionState_MetadataEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.String> metadata_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+    internalGetMetadata() {
+      if (metadata_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            MetadataDefaultEntryHolder.defaultEntry);
       }
+      return metadata_;
+    }
+
+    public int getMetadataCount() {
+      return internalGetMetadata().getMap().size();
     }
     /**
-     * <code>string metadata = 23;</code>
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
      */
-    public com.google.protobuf.ByteString
-        getMetadataBytes() {
-      java.lang.Object ref = metadata_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        metadata_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
+
+    public boolean containsMetadata(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetMetadata().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getMetadataMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getMetadata() {
+      return getMetadataMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
+     */
+
+    public java.util.Map<java.lang.String, java.lang.String> getMetadataMap() {
+      return internalGetMetadata().getMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
+     */
+
+    public java.lang.String getMetadataOrDefault(
+        java.lang.String key,
+        java.lang.String defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetMetadata().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, string&gt; metadata = 23;</code>
+     */
+
+    public java.lang.String getMetadataOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetMetadata().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
+      return map.get(key);
     }
 
     public static final int TAGS_FIELD_NUMBER = 24;
@@ -5022,6 +5145,69 @@ public final class CoprocessSessionState {
       return sessionLifetime_;
     }
 
+    public static final int APPLY_POLICIES_FIELD_NUMBER = 29;
+    private com.google.protobuf.LazyStringList applyPolicies_;
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getApplyPoliciesList() {
+      return applyPolicies_;
+    }
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    public int getApplyPoliciesCount() {
+      return applyPolicies_.size();
+    }
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    public java.lang.String getApplyPolicies(int index) {
+      return applyPolicies_.get(index);
+    }
+    /**
+     * <code>repeated string apply_policies = 29;</code>
+     */
+    public com.google.protobuf.ByteString
+        getApplyPoliciesBytes(int index) {
+      return applyPolicies_.getByteString(index);
+    }
+
+    public static final int CERTIFICATE_FIELD_NUMBER = 30;
+    private volatile java.lang.Object certificate_;
+    /**
+     * <code>string certificate = 30;</code>
+     */
+    public java.lang.String getCertificate() {
+      java.lang.Object ref = certificate_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        certificate_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string certificate = 30;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCertificateBytes() {
+      java.lang.Object ref = certificate_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        certificate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5108,9 +5294,12 @@ public final class CoprocessSessionState {
       if (enableDetailedRecording_ != false) {
         output.writeBool(22, enableDetailedRecording_);
       }
-      if (!getMetadataBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 23, metadata_);
-      }
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetMetadata(),
+          MetadataDefaultEntryHolder.defaultEntry,
+          23);
       for (int i = 0; i < tags_.size(); i++) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 24, tags_.getRaw(i));
       }
@@ -5125,6 +5314,12 @@ public final class CoprocessSessionState {
       }
       if (sessionLifetime_ != 0L) {
         output.writeInt64(28, sessionLifetime_);
+      }
+      for (int i = 0; i < applyPolicies_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 29, applyPolicies_.getRaw(i));
+      }
+      if (!getCertificateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 30, certificate_);
       }
       unknownFields.writeTo(output);
     }
@@ -5231,8 +5426,15 @@ public final class CoprocessSessionState {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(22, enableDetailedRecording_);
       }
-      if (!getMetadataBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, metadata_);
+      for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+           : internalGetMetadata().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+        metadata__ = MetadataDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(23, metadata__);
       }
       {
         int dataSize = 0;
@@ -5255,6 +5457,17 @@ public final class CoprocessSessionState {
       if (sessionLifetime_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(28, sessionLifetime_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < applyPolicies_.size(); i++) {
+          dataSize += computeStringSizeNoTag(applyPolicies_.getRaw(i));
+        }
+        size += dataSize;
+        size += 2 * getApplyPoliciesList().size();
+      }
+      if (!getCertificateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(30, certificate_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5331,8 +5544,8 @@ public final class CoprocessSessionState {
       }
       result = result && (getEnableDetailedRecording()
           == other.getEnableDetailedRecording());
-      result = result && getMetadata()
-          .equals(other.getMetadata());
+      result = result && internalGetMetadata().equals(
+          other.internalGetMetadata());
       result = result && getTagsList()
           .equals(other.getTagsList());
       result = result && getAlias()
@@ -5343,6 +5556,10 @@ public final class CoprocessSessionState {
           == other.getIdExtractorDeadline());
       result = result && (getSessionLifetime()
           == other.getSessionLifetime());
+      result = result && getApplyPoliciesList()
+          .equals(other.getApplyPoliciesList());
+      result = result && getCertificate()
+          .equals(other.getCertificate());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5421,8 +5638,10 @@ public final class CoprocessSessionState {
       hash = (37 * hash) + ENABLE_DETAILED_RECORDING_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getEnableDetailedRecording());
-      hash = (37 * hash) + METADATA_FIELD_NUMBER;
-      hash = (53 * hash) + getMetadata().hashCode();
+      if (!internalGetMetadata().getMap().isEmpty()) {
+        hash = (37 * hash) + METADATA_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetMetadata().hashCode();
+      }
       if (getTagsCount() > 0) {
         hash = (37 * hash) + TAGS_FIELD_NUMBER;
         hash = (53 * hash) + getTagsList().hashCode();
@@ -5437,6 +5656,12 @@ public final class CoprocessSessionState {
       hash = (37 * hash) + SESSION_LIFETIME_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getSessionLifetime());
+      if (getApplyPoliciesCount() > 0) {
+        hash = (37 * hash) + APPLY_POLICIES_FIELD_NUMBER;
+        hash = (53 * hash) + getApplyPoliciesList().hashCode();
+      }
+      hash = (37 * hash) + CERTIFICATE_FIELD_NUMBER;
+      hash = (53 * hash) + getCertificate().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5552,6 +5777,8 @@ public final class CoprocessSessionState {
             return internalGetAccessRights();
           case 13:
             return internalGetOauthKeys();
+          case 23:
+            return internalGetMetadata();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -5565,6 +5792,8 @@ public final class CoprocessSessionState {
             return internalGetMutableAccessRights();
           case 13:
             return internalGetMutableOauthKeys();
+          case 23:
+            return internalGetMutableMetadata();
           default:
             throw new RuntimeException(
                 "Invalid map field number: " + number);
@@ -5650,8 +5879,7 @@ public final class CoprocessSessionState {
         }
         enableDetailedRecording_ = false;
 
-        metadata_ = "";
-
+        internalGetMutableMetadata().clear();
         tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00800000);
         alias_ = "";
@@ -5661,6 +5889,10 @@ public final class CoprocessSessionState {
         idExtractorDeadline_ = 0L;
 
         sessionLifetime_ = 0L;
+
+        applyPolicies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x10000000);
+        certificate_ = "";
 
         return this;
       }
@@ -5726,7 +5958,8 @@ public final class CoprocessSessionState {
           result.monitor_ = monitorBuilder_.build();
         }
         result.enableDetailedRecording_ = enableDetailedRecording_;
-        result.metadata_ = metadata_;
+        result.metadata_ = internalGetMetadata();
+        result.metadata_.makeImmutable();
         if (((bitField0_ & 0x00800000) == 0x00800000)) {
           tags_ = tags_.getUnmodifiableView();
           bitField0_ = (bitField0_ & ~0x00800000);
@@ -5736,6 +5969,12 @@ public final class CoprocessSessionState {
         result.lastUpdated_ = lastUpdated_;
         result.idExtractorDeadline_ = idExtractorDeadline_;
         result.sessionLifetime_ = sessionLifetime_;
+        if (((bitField0_ & 0x10000000) == 0x10000000)) {
+          applyPolicies_ = applyPolicies_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x10000000);
+        }
+        result.applyPolicies_ = applyPolicies_;
+        result.certificate_ = certificate_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5853,10 +6092,8 @@ public final class CoprocessSessionState {
         if (other.getEnableDetailedRecording() != false) {
           setEnableDetailedRecording(other.getEnableDetailedRecording());
         }
-        if (!other.getMetadata().isEmpty()) {
-          metadata_ = other.metadata_;
-          onChanged();
-        }
+        internalGetMutableMetadata().mergeFrom(
+            other.internalGetMetadata());
         if (!other.tags_.isEmpty()) {
           if (tags_.isEmpty()) {
             tags_ = other.tags_;
@@ -5880,6 +6117,20 @@ public final class CoprocessSessionState {
         }
         if (other.getSessionLifetime() != 0L) {
           setSessionLifetime(other.getSessionLifetime());
+        }
+        if (!other.applyPolicies_.isEmpty()) {
+          if (applyPolicies_.isEmpty()) {
+            applyPolicies_ = other.applyPolicies_;
+            bitField0_ = (bitField0_ & ~0x10000000);
+          } else {
+            ensureApplyPoliciesIsMutable();
+            applyPolicies_.addAll(other.applyPolicies_);
+          }
+          onChanged();
+        }
+        if (!other.getCertificate().isEmpty()) {
+          certificate_ = other.certificate_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7122,72 +7373,126 @@ public final class CoprocessSessionState {
         return this;
       }
 
-      private java.lang.Object metadata_ = "";
-      /**
-       * <code>string metadata = 23;</code>
-       */
-      public java.lang.String getMetadata() {
-        java.lang.Object ref = metadata_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          metadata_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.String> metadata_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetMetadata() {
+        if (metadata_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              MetadataDefaultEntryHolder.defaultEntry);
         }
+        return metadata_;
       }
-      /**
-       * <code>string metadata = 23;</code>
-       */
-      public com.google.protobuf.ByteString
-          getMetadataBytes() {
-        java.lang.Object ref = metadata_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          metadata_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+      internalGetMutableMetadata() {
+        onChanged();;
+        if (metadata_ == null) {
+          metadata_ = com.google.protobuf.MapField.newMapField(
+              MetadataDefaultEntryHolder.defaultEntry);
         }
+        if (!metadata_.isMutable()) {
+          metadata_ = metadata_.copy();
+        }
+        return metadata_;
+      }
+
+      public int getMetadataCount() {
+        return internalGetMetadata().getMap().size();
       }
       /**
-       * <code>string metadata = 23;</code>
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
        */
-      public Builder setMetadata(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        metadata_ = value;
-        onChanged();
-        return this;
+
+      public boolean containsMetadata(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetMetadata().getMap().containsKey(key);
       }
       /**
-       * <code>string metadata = 23;</code>
+       * Use {@link #getMetadataMap()} instead.
        */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.String> getMetadata() {
+        return getMetadataMap();
+      }
+      /**
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
+       */
+
+      public java.util.Map<java.lang.String, java.lang.String> getMetadataMap() {
+        return internalGetMetadata().getMap();
+      }
+      /**
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
+       */
+
+      public java.lang.String getMetadataOrDefault(
+          java.lang.String key,
+          java.lang.String defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.String> map =
+            internalGetMetadata().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
+       */
+
+      public java.lang.String getMetadataOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.String> map =
+            internalGetMetadata().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
       public Builder clearMetadata() {
-        
-        metadata_ = getDefaultInstance().getMetadata();
-        onChanged();
+        internalGetMutableMetadata().getMutableMap()
+            .clear();
         return this;
       }
       /**
-       * <code>string metadata = 23;</code>
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
        */
-      public Builder setMetadataBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        metadata_ = value;
-        onChanged();
+
+      public Builder removeMetadata(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableMetadata().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.String>
+      getMutableMetadata() {
+        return internalGetMutableMetadata().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
+       */
+      public Builder putMetadata(
+          java.lang.String key,
+          java.lang.String value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableMetadata().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <code>map&lt;string, string&gt; metadata = 23;</code>
+       */
+
+      public Builder putAllMetadata(
+          java.util.Map<java.lang.String, java.lang.String> values) {
+        internalGetMutableMetadata().getMutableMap()
+            .putAll(values);
         return this;
       }
 
@@ -7474,6 +7779,169 @@ public final class CoprocessSessionState {
         onChanged();
         return this;
       }
+
+      private com.google.protobuf.LazyStringList applyPolicies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureApplyPoliciesIsMutable() {
+        if (!((bitField0_ & 0x10000000) == 0x10000000)) {
+          applyPolicies_ = new com.google.protobuf.LazyStringArrayList(applyPolicies_);
+          bitField0_ |= 0x10000000;
+         }
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public com.google.protobuf.ProtocolStringList
+          getApplyPoliciesList() {
+        return applyPolicies_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public int getApplyPoliciesCount() {
+        return applyPolicies_.size();
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public java.lang.String getApplyPolicies(int index) {
+        return applyPolicies_.get(index);
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public com.google.protobuf.ByteString
+          getApplyPoliciesBytes(int index) {
+        return applyPolicies_.getByteString(index);
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public Builder setApplyPolicies(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureApplyPoliciesIsMutable();
+        applyPolicies_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public Builder addApplyPolicies(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureApplyPoliciesIsMutable();
+        applyPolicies_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public Builder addAllApplyPolicies(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureApplyPoliciesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, applyPolicies_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public Builder clearApplyPolicies() {
+        applyPolicies_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x10000000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string apply_policies = 29;</code>
+       */
+      public Builder addApplyPoliciesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureApplyPoliciesIsMutable();
+        applyPolicies_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object certificate_ = "";
+      /**
+       * <code>string certificate = 30;</code>
+       */
+      public java.lang.String getCertificate() {
+        java.lang.Object ref = certificate_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          certificate_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string certificate = 30;</code>
+       */
+      public com.google.protobuf.ByteString
+          getCertificateBytes() {
+        java.lang.Object ref = certificate_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          certificate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string certificate = 30;</code>
+       */
+      public Builder setCertificate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        certificate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string certificate = 30;</code>
+       */
+      public Builder clearCertificate() {
+        
+        certificate_ = getDefaultInstance().getCertificate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string certificate = 30;</code>
+       */
+      public Builder setCertificateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        certificate_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7567,6 +8035,11 @@ public final class CoprocessSessionState {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_coprocess_SessionState_OauthKeysEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_coprocess_SessionState_MetadataEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_coprocess_SessionState_MetadataEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7583,7 +8056,7 @@ public final class CoprocessSessionState {
       "\n\014allowed_urls\030\004 \003(\0132\025.coprocess.AccessS" +
       "pec\"/\n\rBasicAuthData\022\020\n\010password\030\001 \001(\t\022\014" +
       "\n\004hash\030\002 \001(\t\"\031\n\007JWTData\022\016\n\006secret\030\001 \001(\t\"" +
-      "!\n\007Monitor\022\026\n\016trigger_limits\030\001 \003(\001\"\370\006\n\014S" +
+      "!\n\007Monitor\022\026\n\016trigger_limits\030\001 \003(\001\"\375\007\n\014S" +
       "essionState\022\022\n\nlast_check\030\001 \001(\003\022\021\n\tallow" +
       "ance\030\002 \001(\001\022\014\n\004rate\030\003 \001(\001\022\013\n\003per\030\004 \001(\001\022\017\n" +
       "\007expires\030\005 \001(\003\022\021\n\tquota_max\030\006 \001(\003\022\024\n\014quo" +
@@ -7599,14 +8072,17 @@ public final class CoprocessSessionState {
       "t\030\021 \001(\t\022\023\n\013is_inactive\030\022 \001(\010\022\027\n\017apply_po" +
       "licy_id\030\023 \001(\t\022\024\n\014data_expires\030\024 \001(\003\022#\n\007m" +
       "onitor\030\025 \001(\0132\022.coprocess.Monitor\022!\n\031enab" +
-      "le_detailed_recording\030\026 \001(\010\022\020\n\010metadata\030" +
-      "\027 \001(\t\022\014\n\004tags\030\030 \003(\t\022\r\n\005alias\030\031 \001(\t\022\024\n\014la" +
-      "st_updated\030\032 \001(\t\022\035\n\025id_extractor_deadlin" +
-      "e\030\033 \001(\003\022\030\n\020session_lifetime\030\034 \001(\003\032P\n\021Acc" +
-      "essRightsEntry\022\013\n\003key\030\001 \001(\t\022*\n\005value\030\002 \001" +
-      "(\0132\033.coprocess.AccessDefinition:\0028\001\0320\n\016O" +
-      "authKeysEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\t:\0028\001b\006proto3"
+      "le_detailed_recording\030\026 \001(\010\0227\n\010metadata\030" +
+      "\027 \003(\0132%.coprocess.SessionState.MetadataE" +
+      "ntry\022\014\n\004tags\030\030 \003(\t\022\r\n\005alias\030\031 \001(\t\022\024\n\014las" +
+      "t_updated\030\032 \001(\t\022\035\n\025id_extractor_deadline" +
+      "\030\033 \001(\003\022\030\n\020session_lifetime\030\034 \001(\003\022\026\n\016appl" +
+      "y_policies\030\035 \003(\t\022\023\n\013certificate\030\036 \001(\t\032P\n" +
+      "\021AccessRightsEntry\022\013\n\003key\030\001 \001(\t\022*\n\005value" +
+      "\030\002 \001(\0132\033.coprocess.AccessDefinition:\0028\001\032" +
+      "0\n\016OauthKeysEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
+      "\002 \001(\t:\0028\001\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\t:\0028\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -7655,7 +8131,7 @@ public final class CoprocessSessionState {
     internal_static_coprocess_SessionState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_coprocess_SessionState_descriptor,
-        new java.lang.String[] { "LastCheck", "Allowance", "Rate", "Per", "Expires", "QuotaMax", "QuotaRenews", "QuotaRemaining", "QuotaRenewalRate", "AccessRights", "OrgId", "OauthClientId", "OauthKeys", "BasicAuthData", "JwtData", "HmacEnabled", "HmacSecret", "IsInactive", "ApplyPolicyId", "DataExpires", "Monitor", "EnableDetailedRecording", "Metadata", "Tags", "Alias", "LastUpdated", "IdExtractorDeadline", "SessionLifetime", });
+        new java.lang.String[] { "LastCheck", "Allowance", "Rate", "Per", "Expires", "QuotaMax", "QuotaRenews", "QuotaRemaining", "QuotaRenewalRate", "AccessRights", "OrgId", "OauthClientId", "OauthKeys", "BasicAuthData", "JwtData", "HmacEnabled", "HmacSecret", "IsInactive", "ApplyPolicyId", "DataExpires", "Monitor", "EnableDetailedRecording", "Metadata", "Tags", "Alias", "LastUpdated", "IdExtractorDeadline", "SessionLifetime", "ApplyPolicies", "Certificate", });
     internal_static_coprocess_SessionState_AccessRightsEntry_descriptor =
       internal_static_coprocess_SessionState_descriptor.getNestedTypes().get(0);
     internal_static_coprocess_SessionState_AccessRightsEntry_fieldAccessorTable = new
@@ -7667,6 +8143,12 @@ public final class CoprocessSessionState {
     internal_static_coprocess_SessionState_OauthKeysEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_coprocess_SessionState_OauthKeysEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_coprocess_SessionState_MetadataEntry_descriptor =
+      internal_static_coprocess_SessionState_descriptor.getNestedTypes().get(2);
+    internal_static_coprocess_SessionState_MetadataEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_coprocess_SessionState_MetadataEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
 

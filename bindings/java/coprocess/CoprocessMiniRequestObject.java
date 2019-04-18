@@ -258,6 +258,41 @@ public final class CoprocessMiniRequestObject {
      * <code>.coprocess.ReturnOverrides return_overrides = 10;</code>
      */
     coprocess.CoprocessReturnOverrides.ReturnOverridesOrBuilder getReturnOverridesOrBuilder();
+
+    /**
+     * <code>string method = 11;</code>
+     */
+    java.lang.String getMethod();
+    /**
+     * <code>string method = 11;</code>
+     */
+    com.google.protobuf.ByteString
+        getMethodBytes();
+
+    /**
+     * <code>string request_uri = 12;</code>
+     */
+    java.lang.String getRequestUri();
+    /**
+     * <code>string request_uri = 12;</code>
+     */
+    com.google.protobuf.ByteString
+        getRequestUriBytes();
+
+    /**
+     * <code>string scheme = 13;</code>
+     */
+    java.lang.String getScheme();
+    /**
+     * <code>string scheme = 13;</code>
+     */
+    com.google.protobuf.ByteString
+        getSchemeBytes();
+
+    /**
+     * <code>bytes raw_body = 14;</code>
+     */
+    com.google.protobuf.ByteString getRawBody();
   }
   /**
    * Protobuf type {@code coprocess.MiniRequestObject}
@@ -276,6 +311,10 @@ public final class CoprocessMiniRequestObject {
       body_ = "";
       url_ = "";
       deleteParams_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      method_ = "";
+      requestUri_ = "";
+      scheme_ = "";
+      rawBody_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -408,6 +447,29 @@ public final class CoprocessMiniRequestObject {
                 returnOverrides_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 90: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              method_ = s;
+              break;
+            }
+            case 98: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              requestUri_ = s;
+              break;
+            }
+            case 106: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              scheme_ = s;
+              break;
+            }
+            case 114: {
+
+              rawBody_ = input.readBytes();
               break;
             }
             default: {
@@ -996,6 +1058,117 @@ public final class CoprocessMiniRequestObject {
       return getReturnOverrides();
     }
 
+    public static final int METHOD_FIELD_NUMBER = 11;
+    private volatile java.lang.Object method_;
+    /**
+     * <code>string method = 11;</code>
+     */
+    public java.lang.String getMethod() {
+      java.lang.Object ref = method_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        method_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string method = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMethodBytes() {
+      java.lang.Object ref = method_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        method_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int REQUEST_URI_FIELD_NUMBER = 12;
+    private volatile java.lang.Object requestUri_;
+    /**
+     * <code>string request_uri = 12;</code>
+     */
+    public java.lang.String getRequestUri() {
+      java.lang.Object ref = requestUri_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        requestUri_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string request_uri = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRequestUriBytes() {
+      java.lang.Object ref = requestUri_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        requestUri_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SCHEME_FIELD_NUMBER = 13;
+    private volatile java.lang.Object scheme_;
+    /**
+     * <code>string scheme = 13;</code>
+     */
+    public java.lang.String getScheme() {
+      java.lang.Object ref = scheme_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        scheme_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string scheme = 13;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSchemeBytes() {
+      java.lang.Object ref = scheme_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        scheme_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RAW_BODY_FIELD_NUMBER = 14;
+    private com.google.protobuf.ByteString rawBody_;
+    /**
+     * <code>bytes raw_body = 14;</code>
+     */
+    public com.google.protobuf.ByteString getRawBody() {
+      return rawBody_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1054,6 +1227,18 @@ public final class CoprocessMiniRequestObject {
       }
       if (returnOverrides_ != null) {
         output.writeMessage(10, getReturnOverrides());
+      }
+      if (!getMethodBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, method_);
+      }
+      if (!getRequestUriBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, requestUri_);
+      }
+      if (!getSchemeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 13, scheme_);
+      }
+      if (!rawBody_.isEmpty()) {
+        output.writeBytes(14, rawBody_);
       }
       unknownFields.writeTo(output);
     }
@@ -1140,6 +1325,19 @@ public final class CoprocessMiniRequestObject {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, getReturnOverrides());
       }
+      if (!getMethodBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, method_);
+      }
+      if (!getRequestUriBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, requestUri_);
+      }
+      if (!getSchemeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, scheme_);
+      }
+      if (!rawBody_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(14, rawBody_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -1179,6 +1377,14 @@ public final class CoprocessMiniRequestObject {
         result = result && getReturnOverrides()
             .equals(other.getReturnOverrides());
       }
+      result = result && getMethod()
+          .equals(other.getMethod());
+      result = result && getRequestUri()
+          .equals(other.getRequestUri());
+      result = result && getScheme()
+          .equals(other.getScheme());
+      result = result && getRawBody()
+          .equals(other.getRawBody());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1226,6 +1432,14 @@ public final class CoprocessMiniRequestObject {
         hash = (37 * hash) + RETURN_OVERRIDES_FIELD_NUMBER;
         hash = (53 * hash) + getReturnOverrides().hashCode();
       }
+      hash = (37 * hash) + METHOD_FIELD_NUMBER;
+      hash = (53 * hash) + getMethod().hashCode();
+      hash = (37 * hash) + REQUEST_URI_FIELD_NUMBER;
+      hash = (53 * hash) + getRequestUri().hashCode();
+      hash = (37 * hash) + SCHEME_FIELD_NUMBER;
+      hash = (53 * hash) + getScheme().hashCode();
+      hash = (37 * hash) + RAW_BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getRawBody().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1416,6 +1630,14 @@ public final class CoprocessMiniRequestObject {
           returnOverrides_ = null;
           returnOverridesBuilder_ = null;
         }
+        method_ = "";
+
+        requestUri_ = "";
+
+        scheme_ = "";
+
+        rawBody_ = com.google.protobuf.ByteString.EMPTY;
+
         return this;
       }
 
@@ -1471,6 +1693,10 @@ public final class CoprocessMiniRequestObject {
         } else {
           result.returnOverrides_ = returnOverridesBuilder_.build();
         }
+        result.method_ = method_;
+        result.requestUri_ = requestUri_;
+        result.scheme_ = scheme_;
+        result.rawBody_ = rawBody_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1560,6 +1786,21 @@ public final class CoprocessMiniRequestObject {
         }
         if (other.hasReturnOverrides()) {
           mergeReturnOverrides(other.getReturnOverrides());
+        }
+        if (!other.getMethod().isEmpty()) {
+          method_ = other.method_;
+          onChanged();
+        }
+        if (!other.getRequestUri().isEmpty()) {
+          requestUri_ = other.requestUri_;
+          onChanged();
+        }
+        if (!other.getScheme().isEmpty()) {
+          scheme_ = other.scheme_;
+          onChanged();
+        }
+        if (other.getRawBody() != com.google.protobuf.ByteString.EMPTY) {
+          setRawBody(other.getRawBody());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2648,6 +2889,242 @@ public final class CoprocessMiniRequestObject {
         }
         return returnOverridesBuilder_;
       }
+
+      private java.lang.Object method_ = "";
+      /**
+       * <code>string method = 11;</code>
+       */
+      public java.lang.String getMethod() {
+        java.lang.Object ref = method_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          method_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string method = 11;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMethodBytes() {
+        java.lang.Object ref = method_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          method_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string method = 11;</code>
+       */
+      public Builder setMethod(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        method_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string method = 11;</code>
+       */
+      public Builder clearMethod() {
+        
+        method_ = getDefaultInstance().getMethod();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string method = 11;</code>
+       */
+      public Builder setMethodBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        method_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object requestUri_ = "";
+      /**
+       * <code>string request_uri = 12;</code>
+       */
+      public java.lang.String getRequestUri() {
+        java.lang.Object ref = requestUri_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          requestUri_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string request_uri = 12;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRequestUriBytes() {
+        java.lang.Object ref = requestUri_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          requestUri_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string request_uri = 12;</code>
+       */
+      public Builder setRequestUri(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        requestUri_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string request_uri = 12;</code>
+       */
+      public Builder clearRequestUri() {
+        
+        requestUri_ = getDefaultInstance().getRequestUri();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string request_uri = 12;</code>
+       */
+      public Builder setRequestUriBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        requestUri_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object scheme_ = "";
+      /**
+       * <code>string scheme = 13;</code>
+       */
+      public java.lang.String getScheme() {
+        java.lang.Object ref = scheme_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          scheme_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string scheme = 13;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSchemeBytes() {
+        java.lang.Object ref = scheme_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          scheme_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string scheme = 13;</code>
+       */
+      public Builder setScheme(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        scheme_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string scheme = 13;</code>
+       */
+      public Builder clearScheme() {
+        
+        scheme_ = getDefaultInstance().getScheme();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string scheme = 13;</code>
+       */
+      public Builder setSchemeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        scheme_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString rawBody_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes raw_body = 14;</code>
+       */
+      public com.google.protobuf.ByteString getRawBody() {
+        return rawBody_;
+      }
+      /**
+       * <code>bytes raw_body = 14;</code>
+       */
+      public Builder setRawBody(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        rawBody_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes raw_body = 14;</code>
+       */
+      public Builder clearRawBody() {
+        
+        rawBody_ = getDefaultInstance().getRawBody();
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2742,7 +3219,7 @@ public final class CoprocessMiniRequestObject {
     java.lang.String[] descriptorData = {
       "\n#coprocess_mini_request_object.proto\022\tc" +
       "oprocess\032 coprocess_return_overrides.pro" +
-      "to\"\323\005\n\021MiniRequestObject\022:\n\007headers\030\001 \003(" +
+      "to\"\232\006\n\021MiniRequestObject\022:\n\007headers\030\001 \003(" +
       "\0132).coprocess.MiniRequestObject.HeadersE" +
       "ntry\022A\n\013set_headers\030\002 \003(\0132,.coprocess.Mi" +
       "niRequestObject.SetHeadersEntry\022\026\n\016delet" +
@@ -2753,14 +3230,16 @@ public final class CoprocessMiniRequestObject {
       "Entry\022I\n\017extended_params\030\010 \003(\01320.coproce" +
       "ss.MiniRequestObject.ExtendedParamsEntry" +
       "\022\025\n\rdelete_params\030\t \003(\t\0224\n\020return_overri" +
-      "des\030\n \001(\0132\032.coprocess.ReturnOverrides\032.\n" +
-      "\014HeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\t:\0028\001\0321\n\017SetHeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\t:\0028\001\032-\n\013ParamsEntry\022\013\n\003key\030\001" +
-      " \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0320\n\016AddParamsEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0325\n\023Ext" +
-      "endedParamsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002" +
-      " \001(\t:\0028\001b\006proto3"
+      "des\030\n \001(\0132\032.coprocess.ReturnOverrides\022\016\n" +
+      "\006method\030\013 \001(\t\022\023\n\013request_uri\030\014 \001(\t\022\016\n\006sc" +
+      "heme\030\r \001(\t\022\020\n\010raw_body\030\016 \001(\014\032.\n\014HeadersE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0321\n\017" +
+      "SetHeadersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
+      "\001(\t:\0028\001\032-\n\013ParamsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
+      "alue\030\002 \001(\t:\0028\001\0320\n\016AddParamsEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\0325\n\023ExtendedPara" +
+      "msEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001b" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2780,7 +3259,7 @@ public final class CoprocessMiniRequestObject {
     internal_static_coprocess_MiniRequestObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_coprocess_MiniRequestObject_descriptor,
-        new java.lang.String[] { "Headers", "SetHeaders", "DeleteHeaders", "Body", "Url", "Params", "AddParams", "ExtendedParams", "DeleteParams", "ReturnOverrides", });
+        new java.lang.String[] { "Headers", "SetHeaders", "DeleteHeaders", "Body", "Url", "Params", "AddParams", "ExtendedParams", "DeleteParams", "ReturnOverrides", "Method", "RequestUri", "Scheme", "RawBody", });
     internal_static_coprocess_MiniRequestObject_HeadersEntry_descriptor =
       internal_static_coprocess_MiniRequestObject_descriptor.getNestedTypes().get(0);
     internal_static_coprocess_MiniRequestObject_HeadersEntry_fieldAccessorTable = new

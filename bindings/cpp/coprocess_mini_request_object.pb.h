@@ -393,6 +393,62 @@ class MiniRequestObject : public ::google::protobuf::Message /* @@protoc_inserti
   ::std::string* release_url();
   void set_allocated_url(::std::string* url);
 
+  // string method = 11;
+  void clear_method();
+  static const int kMethodFieldNumber = 11;
+  const ::std::string& method() const;
+  void set_method(const ::std::string& value);
+  #if LANG_CXX11
+  void set_method(::std::string&& value);
+  #endif
+  void set_method(const char* value);
+  void set_method(const char* value, size_t size);
+  ::std::string* mutable_method();
+  ::std::string* release_method();
+  void set_allocated_method(::std::string* method);
+
+  // string request_uri = 12;
+  void clear_request_uri();
+  static const int kRequestUriFieldNumber = 12;
+  const ::std::string& request_uri() const;
+  void set_request_uri(const ::std::string& value);
+  #if LANG_CXX11
+  void set_request_uri(::std::string&& value);
+  #endif
+  void set_request_uri(const char* value);
+  void set_request_uri(const char* value, size_t size);
+  ::std::string* mutable_request_uri();
+  ::std::string* release_request_uri();
+  void set_allocated_request_uri(::std::string* request_uri);
+
+  // string scheme = 13;
+  void clear_scheme();
+  static const int kSchemeFieldNumber = 13;
+  const ::std::string& scheme() const;
+  void set_scheme(const ::std::string& value);
+  #if LANG_CXX11
+  void set_scheme(::std::string&& value);
+  #endif
+  void set_scheme(const char* value);
+  void set_scheme(const char* value, size_t size);
+  ::std::string* mutable_scheme();
+  ::std::string* release_scheme();
+  void set_allocated_scheme(::std::string* scheme);
+
+  // bytes raw_body = 14;
+  void clear_raw_body();
+  static const int kRawBodyFieldNumber = 14;
+  const ::std::string& raw_body() const;
+  void set_raw_body(const ::std::string& value);
+  #if LANG_CXX11
+  void set_raw_body(::std::string&& value);
+  #endif
+  void set_raw_body(const char* value);
+  void set_raw_body(const void* value, size_t size);
+  ::std::string* mutable_raw_body();
+  ::std::string* release_raw_body();
+  void set_allocated_raw_body(::std::string* raw_body);
+
   // .coprocess.ReturnOverrides return_overrides = 10;
   bool has_return_overrides() const;
   void clear_return_overrides();
@@ -443,6 +499,10 @@ class MiniRequestObject : public ::google::protobuf::Message /* @@protoc_inserti
   ::google::protobuf::RepeatedPtrField< ::std::string> delete_params_;
   ::google::protobuf::internal::ArenaStringPtr body_;
   ::google::protobuf::internal::ArenaStringPtr url_;
+  ::google::protobuf::internal::ArenaStringPtr method_;
+  ::google::protobuf::internal::ArenaStringPtr request_uri_;
+  ::google::protobuf::internal::ArenaStringPtr scheme_;
+  ::google::protobuf::internal::ArenaStringPtr raw_body_;
   ::coprocess::ReturnOverrides* return_overrides_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::protobuf_coprocess_5fmini_5frequest_5fobject_2eproto::TableStruct;
@@ -848,6 +908,218 @@ inline void MiniRequestObject::set_allocated_return_overrides(::coprocess::Retur
   }
   return_overrides_ = return_overrides;
   // @@protoc_insertion_point(field_set_allocated:coprocess.MiniRequestObject.return_overrides)
+}
+
+// string method = 11;
+inline void MiniRequestObject::clear_method() {
+  method_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MiniRequestObject::method() const {
+  // @@protoc_insertion_point(field_get:coprocess.MiniRequestObject.method)
+  return method_.GetNoArena();
+}
+inline void MiniRequestObject::set_method(const ::std::string& value) {
+  
+  method_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:coprocess.MiniRequestObject.method)
+}
+#if LANG_CXX11
+inline void MiniRequestObject::set_method(::std::string&& value) {
+  
+  method_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:coprocess.MiniRequestObject.method)
+}
+#endif
+inline void MiniRequestObject::set_method(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  method_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:coprocess.MiniRequestObject.method)
+}
+inline void MiniRequestObject::set_method(const char* value, size_t size) {
+  
+  method_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:coprocess.MiniRequestObject.method)
+}
+inline ::std::string* MiniRequestObject::mutable_method() {
+  
+  // @@protoc_insertion_point(field_mutable:coprocess.MiniRequestObject.method)
+  return method_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MiniRequestObject::release_method() {
+  // @@protoc_insertion_point(field_release:coprocess.MiniRequestObject.method)
+  
+  return method_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MiniRequestObject::set_allocated_method(::std::string* method) {
+  if (method != NULL) {
+    
+  } else {
+    
+  }
+  method_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), method);
+  // @@protoc_insertion_point(field_set_allocated:coprocess.MiniRequestObject.method)
+}
+
+// string request_uri = 12;
+inline void MiniRequestObject::clear_request_uri() {
+  request_uri_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MiniRequestObject::request_uri() const {
+  // @@protoc_insertion_point(field_get:coprocess.MiniRequestObject.request_uri)
+  return request_uri_.GetNoArena();
+}
+inline void MiniRequestObject::set_request_uri(const ::std::string& value) {
+  
+  request_uri_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:coprocess.MiniRequestObject.request_uri)
+}
+#if LANG_CXX11
+inline void MiniRequestObject::set_request_uri(::std::string&& value) {
+  
+  request_uri_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:coprocess.MiniRequestObject.request_uri)
+}
+#endif
+inline void MiniRequestObject::set_request_uri(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  request_uri_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:coprocess.MiniRequestObject.request_uri)
+}
+inline void MiniRequestObject::set_request_uri(const char* value, size_t size) {
+  
+  request_uri_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:coprocess.MiniRequestObject.request_uri)
+}
+inline ::std::string* MiniRequestObject::mutable_request_uri() {
+  
+  // @@protoc_insertion_point(field_mutable:coprocess.MiniRequestObject.request_uri)
+  return request_uri_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MiniRequestObject::release_request_uri() {
+  // @@protoc_insertion_point(field_release:coprocess.MiniRequestObject.request_uri)
+  
+  return request_uri_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MiniRequestObject::set_allocated_request_uri(::std::string* request_uri) {
+  if (request_uri != NULL) {
+    
+  } else {
+    
+  }
+  request_uri_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), request_uri);
+  // @@protoc_insertion_point(field_set_allocated:coprocess.MiniRequestObject.request_uri)
+}
+
+// string scheme = 13;
+inline void MiniRequestObject::clear_scheme() {
+  scheme_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MiniRequestObject::scheme() const {
+  // @@protoc_insertion_point(field_get:coprocess.MiniRequestObject.scheme)
+  return scheme_.GetNoArena();
+}
+inline void MiniRequestObject::set_scheme(const ::std::string& value) {
+  
+  scheme_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:coprocess.MiniRequestObject.scheme)
+}
+#if LANG_CXX11
+inline void MiniRequestObject::set_scheme(::std::string&& value) {
+  
+  scheme_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:coprocess.MiniRequestObject.scheme)
+}
+#endif
+inline void MiniRequestObject::set_scheme(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  scheme_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:coprocess.MiniRequestObject.scheme)
+}
+inline void MiniRequestObject::set_scheme(const char* value, size_t size) {
+  
+  scheme_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:coprocess.MiniRequestObject.scheme)
+}
+inline ::std::string* MiniRequestObject::mutable_scheme() {
+  
+  // @@protoc_insertion_point(field_mutable:coprocess.MiniRequestObject.scheme)
+  return scheme_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MiniRequestObject::release_scheme() {
+  // @@protoc_insertion_point(field_release:coprocess.MiniRequestObject.scheme)
+  
+  return scheme_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MiniRequestObject::set_allocated_scheme(::std::string* scheme) {
+  if (scheme != NULL) {
+    
+  } else {
+    
+  }
+  scheme_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), scheme);
+  // @@protoc_insertion_point(field_set_allocated:coprocess.MiniRequestObject.scheme)
+}
+
+// bytes raw_body = 14;
+inline void MiniRequestObject::clear_raw_body() {
+  raw_body_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& MiniRequestObject::raw_body() const {
+  // @@protoc_insertion_point(field_get:coprocess.MiniRequestObject.raw_body)
+  return raw_body_.GetNoArena();
+}
+inline void MiniRequestObject::set_raw_body(const ::std::string& value) {
+  
+  raw_body_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:coprocess.MiniRequestObject.raw_body)
+}
+#if LANG_CXX11
+inline void MiniRequestObject::set_raw_body(::std::string&& value) {
+  
+  raw_body_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:coprocess.MiniRequestObject.raw_body)
+}
+#endif
+inline void MiniRequestObject::set_raw_body(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  raw_body_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:coprocess.MiniRequestObject.raw_body)
+}
+inline void MiniRequestObject::set_raw_body(const void* value, size_t size) {
+  
+  raw_body_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:coprocess.MiniRequestObject.raw_body)
+}
+inline ::std::string* MiniRequestObject::mutable_raw_body() {
+  
+  // @@protoc_insertion_point(field_mutable:coprocess.MiniRequestObject.raw_body)
+  return raw_body_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* MiniRequestObject::release_raw_body() {
+  // @@protoc_insertion_point(field_release:coprocess.MiniRequestObject.raw_body)
+  
+  return raw_body_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void MiniRequestObject::set_allocated_raw_body(::std::string* raw_body) {
+  if (raw_body != NULL) {
+    
+  } else {
+    
+  }
+  raw_body_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), raw_body);
+  // @@protoc_insertion_point(field_set_allocated:coprocess.MiniRequestObject.raw_body)
 }
 
 #ifdef __GNUC__
